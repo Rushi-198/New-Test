@@ -1,0 +1,98 @@
+<div id="mySidenav" class="sidenav shadow-lg" #mySidenav>
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav(mySidenav)">&times;</a>
+    <!-- <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Clients</a>
+    <a href="#">Contact</a> -->
+
+
+    <div class="d-flex img">
+        <img src="../../../../assets/images/img_avatar2 (1).png" alt="">
+    </div>
+
+
+    <div class="ml-4 mt-3 text-center" *ngIf="userObj">
+        <h5 class="name">{{userObj.username}}</h5>
+        <span>Student</span>
+    </div>
+
+    <!-- {{userObj | json}} -->
+
+
+
+    <div class="ml-4 mt-5">
+        <div class="row" *ngFor="let course of coursesArray">
+            <div class="col-md-6">
+                <div class="d-flex">
+                    <span class="notify1">B2</span>
+                    <div class="ml-3">
+                        <p class="mb-0">{{course.subject}}</p>
+                        <p class="msg">{{course.value < 50 ? 'Basic' : 'Advance' }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="progress">
+                    <div class="progress-bar bg-info" role="progressbar" [style]="'width :'+ course.value+'%'"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+
+        <h5 class="mt-5 mb-4">Remiders <i class="fa-solid fa-bell"></i></h5>
+        <div *ngIf="remindersArray.length > 0">
+            <div *ngFor="let rem of remindersArray">
+                <div class="d-flex">
+                    <span class="msg1"><i class="fa-regular fa-envelope "></i></span>
+                    <div class="ml-3">
+                        <p class="mb-0">{{rem.title}}</p>
+                        <p class="date">{{rem.datetime | date : 'fullDate'}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div id="mySidenav" class="sidenav2 shadow-lg mb-4" #mySidenav2>
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav2(mySidenav2)">&times;</a>
+    <a routerLink="/" routerLinkActive="sactive" [routerLinkActiveOptions]="{exact: true}" class=""><i
+            class="fa-solid fa-box  mr-3 "></i>Dashboard</a>
+    <a routerLink="/msg" routerLinkActive="sactive" [routerLinkActiveOptions]="{exact: true}"><i
+            class="fa-solid fa-message  mr-3"></i>Massages</a>
+    <a routerLink="/customer" routerLinkActive="sactive" [routerLinkActiveOptions]="{exact: true}"><i
+            class="fa-solid fa-user-group mr-2"></i> Customers</a>
+    <a routerLink="/campaigns" routerLinkActive="sactive" [routerLinkActiveOptions]="{exact: true}"><i
+            class="fa-solid fa-play  mr-1"><sup>5</sup></i>Campaigns</a>
+    <a routerLink="/calender" routerLinkActive="sactive" [routerLinkActiveOptions]="{exact: true}"><i
+            class="fa-regular fa-calendar-days  mr-3"></i>Calender</a>
+    <a routerLink="/content" routerLinkActive="sactive" [routerLinkActiveOptions]="{exact: true}"><i
+            class="fa-solid fa-align-center  mr-3"></i>Content</a>
+    <a routerLink="/videos" routerLinkActive="sactive" [routerLinkActiveOptions]="{exact: true}"><i
+            class="fa-solid fa-video  mr-3"></i>Videos</a>
+    <a routerLink="/lists" routerLinkActive="sactive" [routerLinkActiveOptions]="{exact: true}"><i
+            class="fa-regular fa-file  mr-3 "></i>Lists</a>
+
+
+    <div class="mt-5">
+        <div class="card1"><i class="fa-solid fa-file fa-4x"></i>
+
+            <div class="pri">
+                <p>Upgrade to <span>PRO</span> for more resources</p>
+
+            </div>
+
+            <button class="btn btn-primary ">Upgrade</button>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div id="main" class="d-flex justify-content-between">
+    <span style="font-size:30px;cursor:pointer" (click)="openNav2(mySidenav2)">Logo </span>
+    <span style="font-size:30px;cursor:pointer" (click)="openNav(mySidenav)">&#9776; </span>
+</div>
